@@ -16,7 +16,7 @@ resource "aws_security_group" "required-sec-groups" {
       from_port = port.value
       to_port   = port.value
       # secgroup is map/object
-      protocol    = lookup(port.value, var.secgrp_protocol)
+      protocol    = lookup(var.portocols, port.value)
       cidr_blocks = ["${var.mycidr_block}"]
     }
 

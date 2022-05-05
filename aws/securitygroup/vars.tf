@@ -11,6 +11,13 @@ variable "secgrp_ports" {
   
 }
 
+variable "protocols" {
+  type = map
+  default = {
+    22 = "ssh"
+  }
+}
+
 variable "securitygroup_name" {
   type = string 
   default = "allow ssh traffic"
