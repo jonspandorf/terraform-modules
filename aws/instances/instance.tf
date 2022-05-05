@@ -1,6 +1,6 @@
 resource "aws_instance" "ec2" {
-  ami           = "ami-02541b8af977f6cdd"
-  instance_type = "t2.micro"
+  ami           = var.instance_ami
+  instance_type = var.instance_type
 
 
   subnet_id = aws_subnet.public-subnet.id

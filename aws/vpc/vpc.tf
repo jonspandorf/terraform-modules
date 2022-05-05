@@ -22,7 +22,7 @@ resource "aws_subnet" "public-subnet" {
   vpc_id                  = aws_vpc.project-network.id
   cidr_block              = var.subnet_public_network
   map_public_ip_on_launch = "true"
-  availability_zone       = var.availabilityzone
+  availability_zone       = var.availabilityzone_a
 
   tags = {
     Name = "public-subnet"
@@ -33,7 +33,7 @@ resource "aws_subnet" "main-private" {
   vpc_id                  = aws_vpc.project-network.id
   cidr_block              = var.subnet_private_network
   map_public_ip_on_launch = "false"
-  availability_zone       = var.availabilityzone
+  availability_zone       = var.availabilityzone_b
 
   tags = {
     Name = "private-subnet"
