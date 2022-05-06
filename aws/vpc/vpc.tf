@@ -18,25 +18,30 @@ resource "aws_internet_gateway" "main-gw" {
   }
 }
 
-resource "aws_subnet" "public-subnet" {
+resource "aws_subnet" "public-subnets" {
+  count = length(var.public_subnets)
+
   vpc_id                  = aws_vpc.project-network.id
-  cidr_block              = var.subnet_public_network
+  cidr_block              = element(var.public_subnets, count.index)
   map_public_ip_on_launch = "true"
-  availability_zone       = var.availabilityzone_a
+  availability_zone       = element(var.availability_zones, count.index)
 
   tags = {
-    Name = "public-subnet"
+    Name = "public-subnet-${count.index+1}"
   }
 }
 
 resource "aws_subnet" "main-private" {
+
+  count = length(var.private_subnets)
+
   vpc_id                  = aws_vpc.project-network.id
-  cidr_block              = var.subnet_private_network
+  cidr_block              = element(var.private_subnets, count.index)
   map_public_ip_on_launch = "false"
-  availability_zone       = var.availabilityzone_b
+  availability_zone       = element(var.availability_zones, count.index)
 
   tags = {
-    Name = "private-subnet"
+    Name = "private-subnet-${count.index+1}"
   }
 }
 
@@ -54,7 +59,8 @@ resource "aws_route_table" "main-public" {
 }
 
 resource "aws_route_table_association" "main-public-route" {
-  subnet_id      = aws_subnet.public-subnet.id
+  count = length(var.public_subnets)
+  subnet_id      = element(aws_subnet.public-subnets.*.id, count.index)
   route_table_id = aws_route_table.main-public.id
 }
 
@@ -63,5 +69,5 @@ output "required-output-vars-projectnetwork-id" {
 }
 
 output "required-output-vars-subnetid" {
-  value = aws_subnet.public-subnet.id
+  value = aws_subnet.public-subnets.*.id
 }

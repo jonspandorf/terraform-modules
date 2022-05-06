@@ -1,6 +1,6 @@
 variable "network_cidr" {
   type    = string
-  default = "10.10.0.0/16"
+  default = "10.10.0.0/24"
 }
 
 variable "project_network" {
@@ -8,24 +8,22 @@ variable "project_network" {
   default = "My Network"
 }
 
-variable "subnet_public_network" {
-  type    = string
-  default = "10.10.1.0/24"
+variable "public_subnets" {
 
+  type = list
+  default = ["10.10.10.0/25"]
+  
 }
 
-variable "availabilityzone_a" {
-  type    = string
-  default = "us-east-1"
+variable "private_subnets" {
+
+    type = list
+    default = ["10.10.10.128/25"]
+  
 }
 
-variable "subnet_private_network" {
-  type    = string
-  default = "10.10.2.0/24"
-
-}
-
-variable "availabilityzone_b" {
-  type    = string
-  default = "us-west-1"
+variable "availability_zones" {
+  
+  type = list
+  default = ["us-west-1a", "us-west-1c", "us-west-1a","us-west-1c"]
 }
