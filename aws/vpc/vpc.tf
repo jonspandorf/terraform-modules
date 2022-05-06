@@ -53,7 +53,15 @@ resource "aws_route_table" "main-public" {
   }
 }
 
-resource "aws_route_table_association" "main-public-1-a" {
+resource "aws_route_table_association" "main-public-route" {
   subnet_id      = aws_subnet.public-subnet.id
   route_table_id = aws_route_table.main-public.id
+}
+
+output "required-output-vars-projectnetwork-id" {
+  value = aws_vpc.project-network.id
+}
+
+output "required-output-vars-subnetid" {
+  value = aws_subnet.public-subnet.id
 }

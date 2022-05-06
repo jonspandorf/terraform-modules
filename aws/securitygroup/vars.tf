@@ -22,3 +22,9 @@ variable "securitygroup_name" {
   type    = string
   default = "allow ssh traffic"
 }
+
+variable "vpc_id" {
+  type    = string
+  default = "vpcidhere"
+
+}

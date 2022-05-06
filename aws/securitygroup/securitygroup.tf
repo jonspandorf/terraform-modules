@@ -1,5 +1,6 @@
 resource "aws_security_group" "required-sec-groups" {
-  vpc_id      = aws_vpc.project-network.id
+  #  needs the project-network.id 
+  vpc_id      = var.vpc_id
   name        = var.securitygroup_name
   description = "security group that allows ssh and all egress traffic"
   egress {
@@ -16,7 +17,7 @@ resource "aws_security_group" "required-sec-groups" {
       from_port = port.value
       to_port   = port.value
       # secgroup is map/object
-      protocol    = lookup(var.portocols, port.value)
+      protocol    = lookup(var.protocols, port.value)
       cidr_blocks = ["${var.mycidr_block}"]
     }
 
@@ -24,4 +25,9 @@ resource "aws_security_group" "required-sec-groups" {
   tags = {
     Name = "${var.securitygroup_name}"
   }
+}
+
+
+output "security-group-id" {
+  value = aws_security_group.required-sec-groups.id
 }
