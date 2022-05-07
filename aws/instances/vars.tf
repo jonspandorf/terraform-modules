@@ -20,6 +20,12 @@ variable "remote-exec_commands" {
   default = []
 }
 
+variable "local-exec_commands" {
+  type    = list(any)
+  default = []
+}
+
+
 variable "sshuser" {
 
   type    = string

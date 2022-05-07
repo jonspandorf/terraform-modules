@@ -14,7 +14,7 @@ variable "secgrp_ports" {
 variable "protocols" {
   type = map(any)
   default = {
-    22 = "ssh"
+    22 = "tcp"
   }
 }
 
