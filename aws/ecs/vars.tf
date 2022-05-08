@@ -18,15 +18,11 @@ variable "SERVICE_NAME" {
   default = "my-app-service"
 }
 
-variable "public_subnets" {
+variable "PUBLIC_SUBNETS" {
   type    = list(any)
-  default = [  "subnet-0c44a609dc6dca298",
-  "subnet-041bb4e5a6a8f1a9d",]
 }
 
 variable "VPC_ID" {
-  type    = string
-  default = "vpc-0b841dddc07019861"
 }
 
 variable "task-name" {

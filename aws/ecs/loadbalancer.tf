@@ -1,7 +1,7 @@
 resource "aws_alb" "application-loadbalancer" {
   name               = var.LB_NAME
   load_balancer_type = "application"
-  subnets            = var.public_subnets
+  subnets            = var.PUBLIC_SUBNETS
   # Referencing the security group
   security_groups = ["${aws_security_group.loadbalancer-securitygroup.id}"]
 }

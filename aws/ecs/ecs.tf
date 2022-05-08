@@ -17,7 +17,7 @@ resource "aws_ecs_service" "python-service" {
   }
 
   network_configuration {
-    subnets          = var.public_subnets
+    subnets          = var.PUBLIC_SUBNETS
     assign_public_ip = true 
     security_groups  = ["${aws_security_group.service-security-group.id}"]
   }
