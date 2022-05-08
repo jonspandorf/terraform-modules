@@ -1,6 +1,6 @@
 
 data "template_file" "define-task" {
-  template = file("/home/jon/mobileyeProject/terraform/modules/aws/ecs/templates/task_def.json.tpl")
+  template = file("./templates/task_def.json.tpl")
   vars = {
     REPOSITORY_URL = var.MYREPO
     CONTAINER_NAME = var.task-name
