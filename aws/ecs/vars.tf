@@ -10,7 +10,7 @@ variable "LB_NAME" {
 
 variable "MYREPO" {
   type    = string
-  default = "110828812774.dkr.ecr.us-west-1.amazonaws.com/myapp"
+  default = "110828812774.dkr.ecr.us-west-1.amazonaws.com/jenkins-ecr-test"
 }
 
 variable "SERVICE_NAME" {

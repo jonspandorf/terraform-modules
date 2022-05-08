@@ -1,6 +1,6 @@
 
 data "template_file" "define-task" {
-  template = file("./templates/task_def.json.tpl")
+  template = "${file("${path.module}/templates/task_def.json.tpl")}"
   vars = {
     REPOSITORY_URL = var.MYREPO
     CONTAINER_NAME = var.task-name
