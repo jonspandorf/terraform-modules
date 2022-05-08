@@ -1,1 +1,1 @@
-PATH_TO_PUBLIC_KEY = "./mykey"
+# PATH_TO_PUBLIC_KEY = "./mykey"

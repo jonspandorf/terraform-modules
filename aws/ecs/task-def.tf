@@ -4,6 +4,7 @@ data "template_file" "define-task" {
   vars = {
     REPOSITORY_URL = var.MYREPO
     CONTAINER_NAME = var.task-name
+    BUILD_NUMBER   = var.BUILD_NUMBER
   }
 }
 

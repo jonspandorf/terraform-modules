@@ -20,6 +20,7 @@ variable "SERVICE_NAME" {
 
 variable "PUBLIC_SUBNETS" {
   type    = list(any)
+  default = []
 }
 
 variable "VPC_ID" {
@@ -28,4 +29,9 @@ variable "VPC_ID" {
 variable "task-name" {
   type    = string
   default = "default-task-name"
+}
+
+variable "BUILD_NUMBER" {
+  type    = string 
+  default = "1"
 }
